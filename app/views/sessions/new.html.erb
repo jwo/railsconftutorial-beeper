@@ -1,0 +1,14 @@
+<%= content_for(:wrapper_id) {"login"} %>
+
+<div class="content">
+  <%= form_tag login_path, method: :post do %>
+
+    <h2>Login</h2>
+    <fieldset>
+      <div class="clearfix">
+        <%= password_field_tag :password, nil, placeholder: "Password"%>
+      </div>
+      <button class="btn primary" type="submit">Sign in</button>
+    </fieldset>
+  <% end %>
+</div>
