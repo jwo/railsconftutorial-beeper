@@ -1,0 +1,2 @@
+<% @alarms ||= Alarm.all %>
+$("#alarms").html("<%= j render partial: "alarms/alarms" %>");

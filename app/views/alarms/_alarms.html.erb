@@ -1,0 +1,33 @@
+<% if @alarms.any? %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th>Severity</th>
+      <th>Status</th>
+      <th>Last Update</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @alarms.each do |alarm| -%>
+      <tr>
+        <td><%= alarm.service %></td>
+        <td><%= alarm.severity %></td>
+        <td><%= alarm.status %></td>
+        <td><%= distance_of_time_in_words(alarm.updated_at, Time.now)%> ago</td>
+        <td>
+          <% if alarm.status %> 
+            <%= link_to 'Close', alarm_path(id: alarm.service), 
+            method: :delete, 
+            remote: true, 
+            disable_with: "Hold!",
+            class: "btn btn-danger" %>
+          <% end %>
+      </td>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <em>No alarms reported</em>
+<% end %>

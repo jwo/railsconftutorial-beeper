@@ -1,11 +1,15 @@
 class AlarmsController < ApplicationController
-  respond_to :json
+  respond_to :json, :js
 
   before_filter :only => [:create] do
     @alarm = Alarm.find_by_service(params[:service]) || Alarm.create do |alarm|
       alarm.service  = params[:service]
       alarm.severity = 'warning'
     end
+  end
+
+  def index
+    @alarms = Alarm.all
   end
 
   def create
