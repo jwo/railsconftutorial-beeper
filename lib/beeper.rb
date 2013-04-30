@@ -1,3 +1,6 @@
+require_relative 'beeper/sms'
+require_relative 'beeper/email'
+
 module Beeper
   mattr_accessor :twilio_phone_number
   mattr_accessor :twilio_sid

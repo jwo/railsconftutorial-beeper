@@ -1,3 +1,5 @@
+require_relative "../../lib/beeper"
+
 Beeper.config do |config|
   config.twilio_phone_number = ''
   config.twilio_sid = ''
